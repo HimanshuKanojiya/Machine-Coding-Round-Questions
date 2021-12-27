@@ -5,7 +5,7 @@ Github: https://github.com/HimanshuKanojiya
 LinkedIn: https://www.linkedin.com/in/himanshukanojiya98/
 Creation Time: 19:28 PM - 27 December 2021
 
-Challenge: Create Facebook Comment Widget using HTML, CSS, and JavaScript.
+Challenge: Create Comment Widget (Like Facebook) using HTML, CSS, and JavaScript.
   [+] User should be able to give comment
   [+] User should be able to reply to the existing comment (no limits of reply)
   [+] User should be able to delete the comment
