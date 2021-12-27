@@ -3,7 +3,7 @@
 Name: Himanshu Kanojiya
 Github: https://github.com/HimanshuKanojiya
 LinkedIn: https://www.linkedin.com/in/himanshukanojiya98/
-Start Time: 19:28 PM - 27 December 2021
+Creation Time: 19:28 PM - 27 December 2021
 
 Challenge: Create Facebook Comment Widget using HTML, CSS, and JavaScript.
   [+] User should be able to give comment
@@ -15,17 +15,17 @@ Challenge: Create Facebook Comment Widget using HTML, CSS, and JavaScript.
 
 */
 
-function __replyToComment(event){
+function replyToComment(event){
     event.preventDefault();
     event.target.parentElement.nextElementSibling.style.display = "flex";
 }
 
-function __removeComment(event){
+function removeComment(event){
     event.preventDefault();
     event?.target?.parentElement?.parentElement?.remove();
 }
 
-function __addNewComment(value){
+function addNewComment(value){
     if(!value) return;
     return `
         <li>
@@ -34,21 +34,22 @@ function __addNewComment(value){
                 <p>${value}</p>
             </div>
             <div class="commentOptions">
-                <a class="commentReplyLink" onclick="__replyToComment(event)" href="#">Reply</a>
-                <a class="DeleteCommentLink" onclick="__removeComment(event)" href="#">Delete</a>
+                <a class="commentReplyLink" onclick="replyToComment(event)" href="#">Reply</a>
+                <a class="DeleteCommentLink" onclick="removeComment(event)" href="#">Delete</a>
             </div>
-            <input type="text" value="" name="reply" id="reply" onkeyup="__replyToExistingComment(event)">
+            <input type="text" value="" name="reply" id="reply" onkeyup="replyToExistingComment(event)">
         </li>
     `
 }
 
-function __replyToExistingComment(event){
+function replyToExistingComment(event){
     event.preventDefault();
     if(event.key != "Enter") return
+    if(!event.target.value) return
     event.target.style.display = "none";
     event.target.parentElement.innerHTML += `
         <ul>
-            ${__addNewComment(event.target.value)}
+            ${addNewComment(event.target.value)}
         </ul>
     `
 }
@@ -66,9 +67,10 @@ function commentSection(){
         commentWidgetPanel.onkeyup = (event) => {
             event.preventDefault();
             if(event.key != "Enter") return
+            if(!commentWidgetPanel.value) return
             givenComments.innerHTML += `
                 <ul>
-                    ${__addNewComment(commentWidgetPanel.value)}
+                    ${addNewComment(commentWidgetPanel.value)}
                 </ul>
             `;
             cleanUpCommentPanel();
